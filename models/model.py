@@ -28,3 +28,11 @@ obj_col = s[s].index
 
 orde = OrdinalEncoder()
 data[obj_col] = orde.fit_transform(data[obj_col])
+
+# dropping off target and unnecessary columns(diabetes and patient number columns)
+X = data.drop(["patient_number", "diabetes"], inplace=True)
+y = data.diabetes
+
+# scaling data using RobustScaler
+scale = RobustScaler()
+scaled_X = scale.fit_transform(X, y)
