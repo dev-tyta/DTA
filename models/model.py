@@ -17,4 +17,14 @@ data.waist_hip_ratio = round(data.waist / data.hip, 2)
 
 # renaming wrongly named columns
 data.rename(columns={"weight": "height", "height": "weight"}, inplace=True)
-data.height_weight = round(data.height / data.weight)
+data.height_weight = round(data.height / data.weight, 2)
+
+# correcting comma separated number to decimal separated number.
+data.bmi = pd.to_numeric(data.bmi.str.replace(",","."))
+
+# encoding columns with object values using Ordinal Encoding
+s = (data.dtypes == "object")
+obj_col = s[s].index
+
+orde = OrdinalEncoder()
+data[obj_col] = orde.fit_transform(data[obj_col])
