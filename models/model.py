@@ -20,7 +20,7 @@ data.rename(columns={"weight": "height", "height": "weight"}, inplace=True)
 data.height_weight = round(data.height / data.weight, 2)
 
 # correcting comma separated number to decimal separated number.
-data.bmi = pd.to_numeric(data.bmi.str.replace(",","."))
+data.bmi = pd.to_numeric(data.bmi.str.replace(",", "."))
 
 # encoding columns with object values using Ordinal Encoding
 s = (data.dtypes == "object")
@@ -36,3 +36,10 @@ y = data.diabetes
 # scaling data using RobustScaler
 scale = RobustScaler()
 scaled_X = scale.fit_transform(X, y)
+
+# StratifiedShuffleSplit on Data
+split = StratifiedShuffleSplit(n_splits=3)
+
+for train_index, test_index in split.split(scaled_X, y):
+    X_train, X_test = scaled_X[train_index], scaled_X[test_index]
+    y_train, y_test = y[train_index], y[test_index]
