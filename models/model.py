@@ -33,7 +33,7 @@ data[obj_col] = orde.fit_transform(data[obj_col])
 
 print("Splitting features and target.")
 # dropping off target and unnecessary columns (diabetes and patient number columns)
-X = data.drop(["patient_number", "diabetes"])
+X = data.drop(["patient_number", "diabetes"], axis=1)
 y = data.diabetes
 
 print("Robust Scaling on X, y.")
