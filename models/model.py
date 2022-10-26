@@ -35,7 +35,7 @@ print("Splitting features and target.")
 # dropping off target and unnecessary columns (diabetes and patient number columns)
 X = data.drop(["patient_number", "diabetes"], axis=1)
 y = data.diabetes
-y, uniques =pd.factorize(y) 
+y, uniques = pd.factorize(y)
 
 print("Robust Scaling on X, y.")
 # scaling data using RobustScaler
