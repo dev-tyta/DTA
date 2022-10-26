@@ -35,6 +35,7 @@ print("Splitting features and target.")
 # dropping off target and unnecessary columns (diabetes and patient number columns)
 X = data.drop(["patient_number", "diabetes"], axis=1)
 y = data.diabetes
+y, uniques =pd.factorize(y) 
 
 print("Robust Scaling on X, y.")
 # scaling data using RobustScaler
@@ -61,3 +62,7 @@ print(f"F1 Score for LightGBM: {f1}.")
 lightgbm = open("../deployment/lightgbm.pkl", "wb")
 pkl.dump(lgbm, lightgbm)
 lightgbm.close()
+
+unique = open("../deployment/unique.pkl", 'wb')
+pkl.dump(uniques, unique)
+unique.close()
