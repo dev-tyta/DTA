@@ -51,7 +51,7 @@ for train_index, test_index in split.split(scaled_X, y):
     y_train, y_test = y[train_index], y[test_index]
 
 # Loading LightGBM classifier to be used for training model
-lgbm = LGBMClassifier(n_estimators=200, max_depth=-2)
+lgbm = LGBMClassifier(n_estimators=200, learning_rate=0.0099, max_depth=-2, random_state=42)
 lgbm.fit(X_train, y_train)
 pred = lgbm.predict(X_test)
 
