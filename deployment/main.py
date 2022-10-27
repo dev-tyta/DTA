@@ -7,4 +7,8 @@ import joblib
 lightgbm_pickle = open("lightgbm", "rb")
 lgbm_model = joblib.load(lightgbm_pickle)
 
-#
+score = lgbm_model.score()
+
+st.title("Diabetes Prediction App")
+st.write("Test 1")
+st.write(score)
