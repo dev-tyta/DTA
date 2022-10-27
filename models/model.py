@@ -44,14 +44,14 @@ scaled_X = scale.fit_transform(X, y)
 
 print("Stratified Split.")
 # StratifiedShuffleSplit on Data
-split = StratifiedShuffleSplit(n_splits=3, random_state=42)
+split = StratifiedShuffleSplit(n_splits=3, random_state=1234)
 
 for train_index, test_index in split.split(scaled_X, y):
     X_train, X_test = scaled_X[train_index], scaled_X[test_index]
     y_train, y_test = y[train_index], y[test_index]
 
 # Loading LightGBM classifier to be used for training model
-lgbm = LGBMClassifier(n_estimators=200, learning_rate=0.0099, max_depth=-2, random_state=42)
+lgbm = LGBMClassifier(n_estimators=200, learning_rate=0.3, max_depth=7, random_state=42)
 lgbm.fit(X_train, y_train)
 pred = lgbm.predict(X_test)
 
