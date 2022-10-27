@@ -58,6 +58,6 @@ f1 = f1_score(pred, y_test)
 print(f"F1 Score for LightGBM: {f1}.")
 
 # Using pickle to save model
-lightgbm = open("../deployment/lightgbm.pkl", "wb")
+lightgbm = open("../deployment/lightgbm.pickle", "wb")
 pkl.dump(lgbm, lightgbm)
 lightgbm.close()
