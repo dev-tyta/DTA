@@ -44,7 +44,7 @@ scaled_X = scale.fit_transform(X, y)
 
 print("Stratified Split.")
 # StratifiedShuffleSplit on Data
-split = StratifiedShuffleSplit(n_splits=3)
+split = StratifiedShuffleSplit(n_splits=3, random_state=42)
 
 for train_index, test_index in split.split(scaled_X, y):
     X_train, X_test = scaled_X[train_index], scaled_X[test_index]
