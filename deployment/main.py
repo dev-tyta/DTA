@@ -3,7 +3,7 @@ import streamlit as st
 import pickle as pkl
 
 # loading pickle files gotten from model
-lightgbm_pickle = open("./lightgbm.pkl", "rb")
+lightgbm_pickle = open("./lightgbm.pickle", "rb")
 lgbm_model = pkl.load(lightgbm_pickle)
 
 score = lgbm_model.score()
