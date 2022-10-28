@@ -7,9 +7,11 @@ import numpy as np
 lightgbm_pickle = open("./lightgbm.pickle", "rb")
 lgbm_model = pkl.load(lightgbm_pickle)
 
-pred = []
-np_pred = np.array(pred)
-score = lgbm_model.predict(np_pred)
+
+def predict():
+    pred = []
+    np_pred = np.array(pred)
+    score = lgbm_model.predict(np_pred)
 
 
 # create a function to
