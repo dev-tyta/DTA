@@ -10,16 +10,17 @@ lgbm_model = pkl.load(lightgbm_pickle)
 var = [200, 80, 67, 2.99, 20, 1.0, 60, 160, 24.6, 120, 60, 32, 38, 0.84, 2.67]
 
 
-def predict(var):
-    pred = [var]
+def predict(var_name):
+    pred = [var_name]
     np_pred = np.array(pred)
     score = lgbm_model.predict(np_pred)
     return score
 
 
-print(score)
+result = predict(var)
+print(result)
 
 # create a function to
 st.title("Diabetes Prediction App")
 st.write("Test 1")
-st.write(score)
+st.write(result)
