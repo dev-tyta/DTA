@@ -12,6 +12,7 @@ def predict():
     pred = []
     np_pred = np.array(pred)
     score = lgbm_model.predict(np_pred)
+    return score
 
 
 # create a function to
