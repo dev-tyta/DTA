@@ -7,13 +7,17 @@ import numpy as np
 lightgbm_pickle = open("./lightgbm.pickle", "rb")
 lgbm_model = pkl.load(lightgbm_pickle)
 
+var = [200, 80, 67, 2.99, 20, 1.0, 60, 160, 24.6, 120, 60, 32, 38, 0.84, 2.67]
 
-def predict(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13, var14, var15):
-    pred = [var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13, var14, var15]
+
+def predict(var):
+    pred = [var]
     np_pred = np.array(pred)
     score = lgbm_model.predict(np_pred)
     return score
 
+
+print(score)
 
 # create a function to
 st.title("Diabetes Prediction App")
