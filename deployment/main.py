@@ -1,11 +1,12 @@
 # importing python modules.
 import streamlit as st
-import pickle as pkl
+import pickle
 import numpy as np
 
 # loading pickle files gotten from model
-# lightgbm_pickle = open("./lightgbm.pickle", "rb")
-lgbm_model = pkl.load(lightgbm_pickle)
+lightgbm_pickle = open(r"C:\Users\Testys\Documents\GitHub\Streamlit-Deployment corrupted\deployment\lightgbm.pickle",
+                       "rb")
+lgbm_model = pickle.load(lightgbm_pickle)
 
 var = [200, 80, 67, 2.99, 20, 1.0, 60, 160, 24.6, 120, 60, 32, 38, 0.84]
 
