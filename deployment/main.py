@@ -9,22 +9,9 @@ lightgbm_pickle = open(r"C:\Users\Testys\Documents\GitHub\Streamlit-Deployment c
 lgbm_model = pickle.load(lightgbm_pickle)
 
 var = [200, 80, 67, 2.99, 20, 1.0, 60, 160, 24.6, 120, 60, 32, 38, 0.84]
-var_names = ['cholesterol',
-            'glucose',
-            'hdl_chol',
-            'chol_hdl_ratio',
-            'age',
-            'gender',
-            'weight',
-            'height',
-            'bmi',
-            'systolic_bp',
-            'diastolic_bp',
-            'waist',
-            'hip',
-            'waist_hip_ratio',
-            'diabetes',
-            'height_weight']
+var_names = ['cholesterol', 'glucose', 'hdl_chol', 'chol_hdl_ratio', 'age'
+            , 'gender', 'weight', 'height', 'bmi', 'systolic_bp', 'diastolic_bp', 'waist', 'hip'
+            , 'waist_hip_ratio', 'diabetes', 'height_weight']
 
 
 def predict(var_name):
