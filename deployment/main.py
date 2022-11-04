@@ -22,6 +22,7 @@ def predict(var_name):
     return score
 
 
+# test case
 result = predict(var)
 print(result)
 
