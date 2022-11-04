@@ -32,3 +32,4 @@ st.write("Test 1")
 st.write(result)
 
 # creating input feature for data
+name = st.
