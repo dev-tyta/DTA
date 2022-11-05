@@ -32,4 +32,6 @@ st.write("Test 1")
 st.write(result)
 
 # creating input feature for data
-name = st.
+name = st.text("Name: ")
+gender = st.selectbox(label="Gender: ", options=["Male", "Female"])
+
