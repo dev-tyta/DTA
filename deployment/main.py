@@ -31,7 +31,8 @@ st.write("Test 1")
 st.write(result)
 
 # creating input feature for data
-name = st.text("Name: ")
-gender = st.selectbox(label="Gender: ", options=["Male", "Female"])
+name = st.text("Patient's Name: ")
+gender = st.selectbox(label="Patient's Gender: ", options=["Male", "Female"])
 age = st.slider(label="Patient's Age: ", min_value=0, max_value=100)
-chol = st.slider(label="Patient's Cholesterol Level: ", min_value=0, max_value=100)
+chol = st.slider(label="Patient's Cholesterol Level: ", min_value=0, max_value=200)
+glucose = st.slider(label="Patient's Glucose: ", min_value=0, max_value=100)
