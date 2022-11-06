@@ -1,7 +1,6 @@
 # importing python modules.
 import streamlit as st
 import joblib
-import pickle
 import numpy as np
 
 # loading pickle files gotten from model
@@ -34,5 +33,5 @@ st.write(result)
 # creating input feature for data
 name = st.text("Name: ")
 gender = st.selectbox(label="Gender: ", options=["Male", "Female"])
-age = st.slider()
-cholestrol = st.slider()
+age = st.slider(label="Patient's Age: ", min_value=0, max_value=100)
+chol = st.slider(label="Patient's Cholesterol Level: ", min_value=0, max_value=100)
