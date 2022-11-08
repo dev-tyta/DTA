@@ -27,7 +27,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Testys/Documents/GitHub/Streamlit-Deployment corrupted",
+    "last_opened_file_path": "C:/Users/Testys/Documents/GitHub/Streamlit-Deployment",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -43,6 +43,7 @@
       <option name="presentableId" value="Default" />
       <updated>1667329768436</updated>
       <workItem from="1667329841414" duration="808000" />
+      <workItem from="1667942770939" duration="21000" />
     </task>
     <servers />
   </component>
