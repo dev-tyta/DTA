@@ -9,9 +9,9 @@ lightgbm_pickle = open(r"C:\Users\Testys\Documents\GitHub\Streamlit-Deployment c
 lgbm_model = joblib.load(lightgbm_pickle)
 
 var = [200, 80, 67, 2.99, 20, 0.0, 60, 160, 24.6, 120, 60, 32, 38, 0.84, 2.67]
-var_names = ['cholesterol', 'glucose', 'hdl_chol', 'chol_hdl_ratio', 'age'
-            , 'gender', 'weight', 'height', 'bmi', 'systolic_bp', 'diastolic_bp', 'waist', 'hip'
-            , 'waist_hip_ratio', 'diabetes', 'height_weight']
+var_names = ['cholesterol', 'glucose', 'hdl_chol', 'chol_hdl_ratio', 'age',
+             'gender', 'weight', 'height', 'bmi', 'systolic_bp', 'diastolic_bp', 'waist', 'hip',
+             'waist_hip_ratio', 'diabetes', 'height_weight']
 
 
 def predict(var_name):
@@ -26,8 +26,12 @@ result = predict(var)
 print(result)
 
 # create a function to
-st.title("Diabetes Prediction App")
-st.write("Test 1")
+st.title("Diabetes Test App")
+st.write("Diabetes is known as a very deadly disease if not diagnosed early. To make it easier for health "
+         "practitioners to diagnose this disease early, previous data have been accumulated to predict an accurate "
+         "result for new patients. "
+         "The Doctor is to retrieve necessary information from the patients to carry out this test. A diabetic patient "
+         "should be notified early and should commence treatment immediately.")
 
 # creating input feature for data
 name = st.text("Patient's Name: ")
@@ -39,7 +43,7 @@ height_cm = st.number_input(label="Patient's Height(cm): ")
 height = height_cm * 0.393701
 weight_kg = st.number_input("Patient's Weight in(kg): ")
 weight = weight_kg * 2.205
-bmi = st.slider(label="Patient's Body Mass:", min_value=0, max_value=50)
+bmi = weight_kg / ((height_cm / 100)**2)
 hdl_chol = st.slider(label="Patient's HDL Cholesterol(mg/dL): ", min_value=0, max_value=100)
 chol_hdl_ratio = chol / hdl_chol
 waist = st.number_input("Patient's Waist Size(inches): ")
@@ -47,3 +51,4 @@ hip = st.number_input("Patient's Hip Size(inches): ")
 waist_hip_ratio = waist / hip
 systolic_bp = st.number_input(label="Patient's Systolic Blood Pressure(mmHg): ")
 diastolic_bp = st.number_input(label="Patient's Diastolic Blood Pressure(mmHg): ")
+# bmi = kg/m3
