@@ -28,11 +28,22 @@ print(result)
 # create a function to
 st.title("Diabetes Prediction App")
 st.write("Test 1")
-st.write(result)
 
 # creating input feature for data
 name = st.text("Patient's Name: ")
 gender = st.selectbox(label="Patient's Gender: ", options=["Male", "Female"])
 age = st.slider(label="Patient's Age: ", min_value=0, max_value=100)
-chol = st.slider(label="Patient's Cholesterol Level: ", min_value=0, max_value=200)
-glucose = st.slider(label="Patient's Glucose: ", min_value=0, max_value=100)
+chol = st.slider(label="Patient's Cholesterol Level(mg/dL): ", min_value=40, max_value=200)
+glucose = st.slider(label="Patient's Sugar Level(mg/dL): ", min_value=40, max_value=250)
+height_cm = st.number_input(label="Patient's Height(cm): ")
+height = height_cm * 0.393701
+weight_kg = st.number_input("Patient's Weight in(kg): ")
+weight = weight_kg * 2.205
+bmi = st.slider(label="Patient's Body Mass:", min_value=0, max_value=50)
+hdl_chol = st.slider(label="Patient's HDL Cholesterol(mg/dL): ", min_value=0, max_value=100)
+chol_hdl_ratio = chol / hdl_chol
+waist = st.number_input("Patient's Waist Size(inches): ")
+hip = st.number_input("Patient's Hip Size(inches): ")
+waist_hip_ratio = waist / hip
+systolic_bp = st.number_input(label="Patient's Systolic Blood Pressure(mmHg): ")
+diastolic_bp = st.number_input(label="Patient's Diastolic Blood Pressure(mmHg): ")
