@@ -11,7 +11,7 @@ lgbm_model = joblib.load(lightgbm_pickle)
 var = [200, 80, 67, 2.99, 20, 0.0, 60, 160, 24.6, 120, 60, 32, 38, 0.84, 2.67]
 var_names = ['cholesterol', 'glucose', 'hdl_chol', 'chol_hdl_ratio', 'age',
              'gender', 'weight', 'height', 'bmi', 'systolic_bp', 'diastolic_bp', 'waist', 'hip',
-             'waist_hip_ratio', 'diabetes', 'height_weight']
+             'waist_hip_ratio', 'diabetes']
 
 
 def predict(var_name):
@@ -33,22 +33,31 @@ st.write("Diabetes is known as a very deadly disease if not diagnosed early. To 
          "The Doctor is to retrieve necessary information from the patients to carry out this test. A diabetic patient "
          "should be notified early and should commence treatment immediately.")
 
-# creating input feature for data
-name = st.text("Patient's Name: ")
-gender = st.selectbox(label="Patient's Gender: ", options=["Male", "Female"])
-age = st.slider(label="Patient's Age: ", min_value=0, max_value=100)
-chol = st.slider(label="Patient's Cholesterol Level(mg/dL): ", min_value=40, max_value=200)
-glucose = st.slider(label="Patient's Sugar Level(mg/dL): ", min_value=40, max_value=250)
-height_cm = st.number_input(label="Patient's Height(cm): ")
-height = height_cm * 0.393701
-weight_kg = st.number_input("Patient's Weight in(kg): ")
-weight = weight_kg * 2.205
-bmi = weight_kg / ((height_cm / 100)**2)
-hdl_chol = st.slider(label="Patient's HDL Cholesterol(mg/dL): ", min_value=0, max_value=100)
-chol_hdl_ratio = chol / hdl_chol
-waist = st.number_input("Patient's Waist Size(inches): ")
-hip = st.number_input("Patient's Hip Size(inches): ")
-waist_hip_ratio = waist / hip
-systolic_bp = st.number_input(label="Patient's Systolic Blood Pressure(mmHg): ")
-diastolic_bp = st.number_input(label="Patient's Diastolic Blood Pressure(mmHg): ")
-# bmi = kg/m3
+
+def inputs():
+    # creating input feature for data
+    name = st.text("Patient's Name: ")
+    gender_obj = st.selectbox(label="Patient's Gender: ", options=["Male", "Female"])
+    if gender_obj == "Male":
+        gender = 1
+    else:
+        gender = 0
+
+    age = st.slider(label="Patient's Age: ", min_value=0, max_value=100)
+    chol = st.slider(label="Patient's Cholesterol Level(mg/dL): ", min_value=40, max_value=200)
+    glucose = st.slider(label="Patient's Sugar Level(mg/dL): ", min_value=40, max_value=250)
+    height_cm = st.number_input(label="Patient's Height(cm): ")
+    height = height_cm * 0.393701
+    weight_kg = st.number_input("Patient's Weight in(kg): ")
+    weight = weight_kg * 2.205
+    bmi = weight_kg / ((height_cm / 100)**2)
+    hdl_chol = st.slider(label="Patient's HDL Cholesterol(mg/dL): ", min_value=0, max_value=100)
+    chol_hdl_ratio = chol / hdl_chol
+    waist = st.number_input("Patient's Waist Size(inches): ")
+    hip = st.number_input("Patient's Hip Size(inches): ")
+    waist_hip_ratio = waist / hip
+    systolic_bp = st.number_input(label="Patient's Systolic Blood Pressure(mmHg): ")
+    diastolic_bp = st.number_input(label="Patient's Diastolic Blood Pressure(mmHg): ")
+    patient_data = [chol, glucose, hdl_chol, chol_hdl_ratio, age, gender, weight, height, bmi,
+                    systolic_bp, diastolic_bp, waist, hip, waist_hip_ratio]
+    return patient_data
