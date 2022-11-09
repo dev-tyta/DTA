@@ -25,7 +25,7 @@ def inputs():
             gender = 0
 
         age = st.slider(label="Patient's Age: ", min_value=0, max_value=100)
-        chol = st.slider(label="Patient's Cholesterol Level(mg/dL): ", min_value=40, max_value=200)
+        chol = st.slider(label="Patient's Cholesterol Level(mg/dL): ", min_value=40, max_value=400)
         glucose = st.slider(label="Patient's Sugar Level(mg/dL): ", min_value=40, max_value=250)
         height_cm = st.number_input(label="Patient's Height(cm): ")
         height = height_cm * 0.393701
