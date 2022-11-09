@@ -5,7 +5,7 @@ import numpy as np
 import time
 
 # loading pickle files gotten from model
-lightgbm_pickle = open(r"C:\Users\Testys\Documents\GitHub\Streamlit-Deployment corrupted\deployment\lightgbm.pickle",
+lightgbm_pickle = open(r"C:\Users\Testys\Documents\GitHub\Streamlit-Deployment\deployment\lightgbm.pickle",
                        "rb")
 lgbm_model = joblib.load(lightgbm_pickle)
 
@@ -71,4 +71,3 @@ def run():
 
 if __name__ == "__main__":
     run()
-    
