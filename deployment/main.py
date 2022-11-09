@@ -17,7 +17,7 @@ var_names = ['cholesterol', 'glucose', 'hdl_chol', 'chol_hdl_ratio', 'age',
 def inputs():
     # creating input feature for data
     with st.form(key="diabetes_data"):
-        name = st.text("Patient's Name: ")
+        name = st.text_input("Patient's Name: ")
         gender_obj = st.selectbox(label="Patient's Gender: ", options=["Male", "Female"])
         if gender_obj == "Male":
             gender = 1
@@ -32,10 +32,10 @@ def inputs():
         weight_kg = st.number_input("Patient's Weight in(kg): ")
         weight = weight_kg * 2.205
         hdl_chol = st.slider(label="Patient's HDL Cholesterol(mg/dL): ", min_value=0, max_value=100)
-        waist = st.number_input("Patient's Waist Size(inches): ")
-        hip = st.number_input("Patient's Hip Size(inches): ")
-        systolic_bp = st.number_input(label="Patient's Systolic Blood Pressure(mmHg): ")
-        diastolic_bp = st.number_input(label="Patient's Diastolic Blood Pressure(mmHg): ")
+        waist = st.number_input("Patient's Waist Size(inches): ", step=1)
+        hip = st.number_input("Patient's Hip Size(inches): ", step=1)
+        systolic_bp = st.number_input(label="Patient's Systolic Blood Pressure(mmHg): ", step=1)
+        diastolic_bp = st.number_input(label="Patient's Diastolic Blood Pressure(mmHg): ", step=1)
         submit = st.form_submit_button("Submit Test")
         if submit:
             bmi = weight_kg / ((height_cm / 100)**2)
@@ -43,6 +43,8 @@ def inputs():
             waist_hip_ratio = waist / hip
             patient_data = [chol, glucose, hdl_chol, chol_hdl_ratio, age, gender, weight, height, bmi,
                             systolic_bp, diastolic_bp, waist, hip, waist_hip_ratio]
+        else:
+            patient_data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     return patient_data
 
 
@@ -65,10 +67,9 @@ def run():
     with st.spinner(text="Diagnosing....."):
         time.sleep(5)
     if dia_score == 0:
-        st.error("Positive. Diabetes Diagnosed.", icon="🚨‼")
+        st.error("Positive. Diabetes Diagnosed.")
     else:
         st.success("Negative. Diabetes not diagnosed.")
 
 
-if __name__ == "__main__":
-    run()
+run()
