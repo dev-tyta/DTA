@@ -8,30 +8,9 @@ lightgbm_pickle = open(r"C:\Users\Testys\Documents\GitHub\Streamlit-Deployment c
                        "rb")
 lgbm_model = joblib.load(lightgbm_pickle)
 
-var = [200, 80, 67, 2.99, 20, 0.0, 60, 160, 24.6, 120, 60, 32, 38, 0.84, 2.67]
 var_names = ['cholesterol', 'glucose', 'hdl_chol', 'chol_hdl_ratio', 'age',
              'gender', 'weight', 'height', 'bmi', 'systolic_bp', 'diastolic_bp', 'waist', 'hip',
              'waist_hip_ratio', 'diabetes']
-
-
-def predict(var_name):
-    pred = [var_name]
-    np_pred = np.array(pred)
-    score = lgbm_model.predict(np_pred)
-    return score
-
-
-# test case
-result = predict(var)
-print(result)
-
-# create a function to
-st.title("Diabetes Test App")
-st.write("Diabetes is known as a very deadly disease if not diagnosed early. To make it easier for health "
-         "practitioners to diagnose this disease early, previous data have been accumulated to predict an accurate "
-         "result for new patients. "
-         "The Doctor is to retrieve necessary information from the patients to carry out this test. A diabetic patient "
-         "should be notified early and should commence treatment immediately.")
 
 
 def inputs():
@@ -61,3 +40,25 @@ def inputs():
     patient_data = [chol, glucose, hdl_chol, chol_hdl_ratio, age, gender, weight, height, bmi,
                     systolic_bp, diastolic_bp, waist, hip, waist_hip_ratio]
     return patient_data
+
+
+def predict(var_name):
+    pred = [var_name]
+    np_pred = np.array(pred)
+    score = lgbm_model.predict(np_pred)
+    if score == 0:
+        results = "Positive. Diabetes Diagnosed."
+    else:
+        results = "Negative. Diabetes not diagnosed."
+    return results
+
+
+def run():
+    st.title("Diabetes Test App")
+    st.write("Diabetes is known as a very deadly disease if not diagnosed early. To make it easier for health "
+             "practitioners to diagnose this disease early, previous data have been accumulated to predict an accurate "
+             "result for new patients. "
+             "The Doctor is to retrieve necessary information from the patients to carry out this test."
+             " A diabetic patient should be notified early and should commence treatment immediately.")
+    info = inputs()
+    
