@@ -2,6 +2,7 @@
 import streamlit as st
 import joblib
 import numpy as np
+import time
 
 # loading pickle files gotten from model
 lightgbm_pickle = open(r"C:\Users\Testys\Documents\GitHub\Streamlit-Deployment corrupted\deployment\lightgbm.pickle",
@@ -37,6 +38,7 @@ def inputs():
     waist_hip_ratio = waist / hip
     systolic_bp = st.number_input(label="Patient's Systolic Blood Pressure(mmHg): ")
     diastolic_bp = st.number_input(label="Patient's Diastolic Blood Pressure(mmHg): ")
+    st.form_submit_button()
     patient_data = [chol, glucose, hdl_chol, chol_hdl_ratio, age, gender, weight, height, bmi,
                     systolic_bp, diastolic_bp, waist, hip, waist_hip_ratio]
     return patient_data
@@ -46,11 +48,7 @@ def predict(var_name):
     pred = [var_name]
     np_pred = np.array(pred)
     score = lgbm_model.predict(np_pred)
-    if score == 0:
-        results = "Positive. Diabetes Diagnosed."
-    else:
-        results = "Negative. Diabetes not diagnosed."
-    return results
+    return score
 
 
 def run():
@@ -61,4 +59,10 @@ def run():
              "The Doctor is to retrieve necessary information from the patients to carry out this test."
              " A diabetic patient should be notified early and should commence treatment immediately.")
     info = inputs()
-    
+    dia_score = predict(info)
+    with st.spinner(text="Diagnosing....."):
+        time.sleep(5)
+    if dia_score == 0:
+        st.error("Positive. Diabetes Diagnosed.", icon="🚨")
+    else:
+        st.success("Negative. Diabetes not diagnosed.")
