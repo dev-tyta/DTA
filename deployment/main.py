@@ -72,4 +72,5 @@ def run():
         st.success("Negative. Diabetes not diagnosed.")
 
 
-run()
+if __name__ == "__main__":
+    run()
