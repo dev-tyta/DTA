@@ -16,29 +16,30 @@ var_names = ['cholesterol', 'glucose', 'hdl_chol', 'chol_hdl_ratio', 'age',
 
 def inputs():
     # creating input feature for data
-    name = st.text("Patient's Name: ")
-    gender_obj = st.selectbox(label="Patient's Gender: ", options=["Male", "Female"])
-    if gender_obj == "Male":
-        gender = 1
-    else:
-        gender = 0
+    with st.form(key="diabetes_data"):
+        name = st.text("Patient's Name: ")
+        gender_obj = st.selectbox(label="Patient's Gender: ", options=["Male", "Female"])
+        if gender_obj == "Male":
+            gender = 1
+        else:
+            gender = 0
 
-    age = st.slider(label="Patient's Age: ", min_value=0, max_value=100)
-    chol = st.slider(label="Patient's Cholesterol Level(mg/dL): ", min_value=40, max_value=200)
-    glucose = st.slider(label="Patient's Sugar Level(mg/dL): ", min_value=40, max_value=250)
-    height_cm = st.number_input(label="Patient's Height(cm): ")
-    height = height_cm * 0.393701
-    weight_kg = st.number_input("Patient's Weight in(kg): ")
-    weight = weight_kg * 2.205
-    bmi = weight_kg / ((height_cm / 100)**2)
-    hdl_chol = st.slider(label="Patient's HDL Cholesterol(mg/dL): ", min_value=0, max_value=100)
-    chol_hdl_ratio = chol / hdl_chol
-    waist = st.number_input("Patient's Waist Size(inches): ")
-    hip = st.number_input("Patient's Hip Size(inches): ")
-    waist_hip_ratio = waist / hip
-    systolic_bp = st.number_input(label="Patient's Systolic Blood Pressure(mmHg): ")
-    diastolic_bp = st.number_input(label="Patient's Diastolic Blood Pressure(mmHg): ")
-    st.form_submit_button()
+        age = st.slider(label="Patient's Age: ", min_value=0, max_value=100)
+        chol = st.slider(label="Patient's Cholesterol Level(mg/dL): ", min_value=40, max_value=200)
+        glucose = st.slider(label="Patient's Sugar Level(mg/dL): ", min_value=40, max_value=250)
+        height_cm = st.number_input(label="Patient's Height(cm): ")
+        height = height_cm * 0.393701
+        weight_kg = st.number_input("Patient's Weight in(kg): ")
+        weight = weight_kg * 2.205
+        bmi = weight_kg / ((height_cm / 100)**2)
+        hdl_chol = st.slider(label="Patient's HDL Cholesterol(mg/dL): ", min_value=0, max_value=100)
+        chol_hdl_ratio = chol / hdl_chol
+        waist = st.number_input("Patient's Waist Size(inches): ")
+        hip = st.number_input("Patient's Hip Size(inches): ")
+        waist_hip_ratio = waist / hip
+        systolic_bp = st.number_input(label="Patient's Systolic Blood Pressure(mmHg): ")
+        diastolic_bp = st.number_input(label="Patient's Diastolic Blood Pressure(mmHg): ")
+        st.form_submit_button("Submit Test")
     patient_data = [chol, glucose, hdl_chol, chol_hdl_ratio, age, gender, weight, height, bmi,
                     systolic_bp, diastolic_bp, waist, hip, waist_hip_ratio]
     return patient_data
@@ -63,6 +64,10 @@ def run():
     with st.spinner(text="Diagnosing....."):
         time.sleep(5)
     if dia_score == 0:
-        st.error("Positive. Diabetes Diagnosed.", icon="🚨")
+        st.error("Positive. Diabetes Diagnosed.", icon="🚨‼")
     else:
         st.success("Negative. Diabetes not diagnosed.")
+
+
+if __name__ == "__main__":
+    run()
