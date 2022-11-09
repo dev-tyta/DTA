@@ -32,7 +32,6 @@ def inputs():
         weight_kg = st.number_input("Patient's Weight in(kg): ")
         weight = weight_kg * 2.205
         hdl_chol = st.slider(label="Patient's HDL Cholesterol(mg/dL): ", min_value=0, max_value=100)
-        chol_hdl_ratio = chol / hdl_chol
         waist = st.number_input("Patient's Waist Size(inches): ")
         hip = st.number_input("Patient's Hip Size(inches): ")
         systolic_bp = st.number_input(label="Patient's Systolic Blood Pressure(mmHg): ")
@@ -40,6 +39,7 @@ def inputs():
         submit = st.form_submit_button("Submit Test")
         if submit:
             bmi = weight_kg / ((height_cm / 100)**2)
+            chol_hdl_ratio = chol / hdl_chol
             waist_hip_ratio = waist / hip
             patient_data = [chol, glucose, hdl_chol, chol_hdl_ratio, age, gender, weight, height, bmi,
                             systolic_bp, diastolic_bp, waist, hip, waist_hip_ratio]
