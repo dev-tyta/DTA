@@ -9,11 +9,13 @@ lightgbm_pickle = open(r"C:\Users\Testys\Documents\GitHub\Streamlit-Deployment\d
                        "rb")
 lgbm_model = joblib.load(lightgbm_pickle)
 
+# variable name for 
 var_names = ['cholesterol', 'glucose', 'hdl_chol', 'chol_hdl_ratio', 'age',
              'gender', 'weight', 'height', 'bmi', 'systolic_bp', 'diastolic_bp', 'waist', 'hip',
              'waist_hip_ratio', 'diabetes']
 
 
+# function to receive user information.
 def inputs():
     # creating input feature for data
     with st.form(key="diabetes_data"):
