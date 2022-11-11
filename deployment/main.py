@@ -58,6 +58,7 @@ def predict(var_name):
     return score
 
 
+# function to run streamlit app 
 def run():
     st.title("Diabetes Test App")
     st.write("Diabetes is known as a very deadly disease if not diagnosed early. To make it easier for health "
