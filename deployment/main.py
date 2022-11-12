@@ -52,7 +52,7 @@ def inputs():
 
 # function to create a dataframe and carry out prediction.
 def predict(var_name):
-    pred = var_name
+    pred = [var_name]
     np_pred = np.array(pred)
     score = lgbm_model.predict(np_pred)
     return score
