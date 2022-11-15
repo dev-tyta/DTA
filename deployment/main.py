@@ -5,7 +5,7 @@ import numpy as np
 import time
 
 # loading pickle files gotten from model
-lightgbm_pickle = open("lightgbm.pickle", "rb")
+lightgbm_pickle = open("deployment/lightgbm.pickle", "rb")
 lgbm_model = joblib.load(lightgbm_pickle)
 
 # column name for each column in the diabetes dataset.
