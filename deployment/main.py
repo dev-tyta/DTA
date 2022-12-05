@@ -70,10 +70,10 @@ def run():
     with st.spinner(text="Diagnosing....."):
         time.sleep(5)
     if dia_score == 0:
-        st.error("Positive. Diabetes Diagnosed.")
+        st.error("Negative. Diabetes not diagnosed.")
     else:
-        st.success("Negative. Diabetes not diagnosed.")
-
+        st.success("Positive. Diabetes Diagnosed.")
+       
 
 if __name__ == "__main__":
     run()
