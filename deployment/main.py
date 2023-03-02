@@ -5,7 +5,7 @@ import numpy as np
 import time
 
 # loading pickle files gotten from model
-lightgbm_pickle = open(r"./lightgbm.pickle", "rb")
+lightgbm_pickle = open("deployment/lightgbm.pickle", "rb")
 lgbm_model = joblib.load(lightgbm_pickle)
 
 # column name for each column in the diabetes dataset.
@@ -69,11 +69,11 @@ def run():
     dia_score = predict(info)
     with st.spinner(text="Diagnosing....."):
         time.sleep(5)
-    if dia_score == 0:
-        st.error("Positive. Diabetes Diagnosed.")
+    if dia_score == 1:
+        st.error("Positive. Diabetes diagnosed.")
     else:
-        st.success("Negative. Diabetes not diagnosed.")
-
+        st.success("Negative. Diabetes not Diagnosed.")
+       
 
 if __name__ == "__main__":
     run()
